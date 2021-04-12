@@ -1,0 +1,59 @@
+数据结构说明和数据字典
+1、typedef struct building
+{
+	int index;
+	char type[15];
+	char name[30];
+} building;
+建筑（服务设施）结构体，包含建筑物序号，建筑物类型，建筑物名称
+
+2、typedef struct path
+{
+	int length;
+	double crowded;
+	int bicycle;
+	building departure;
+	building destination;
+} path;
+道路结构体，包含道路的长度，拥挤程度，是否可通行自行车，出发地及目的地。
+
+3、typedef struct schoolbus
+{
+	int time_dep;
+	int length;
+ 	int time;
+} schoolbus;
+校车结构体，包含出发时间、行走距离、时间开销。
+
+4、typedef struct bus
+{
+	int time_dep;
+	int length;
+	int time;
+}bus;
+公交汽车结构体，包含首班车时间、间隔时间、行走距离、时间开销。
+
+5、
+导航策略信息
+
+6、
+逻辑位置和物理位置的对应表；
+
+7、typedef struct cur_pos
+{
+	int x;
+	int y;
+} cur_pos;
+学生当前位置
+
+8、int connect [building _num][ building _num]
+邻接矩阵，0表示建筑间不直接连通，n表示建筑间有n条直达路线。
+9、transportation *method [building_num][building_num]
+路线矩阵，用来存储所有建筑间直达线路。
+10、int visit[building _num]
+visit数组，用来在深搜-回溯中标记是否已经经过某节点建筑。
+11、building bucket[max][building_num]
+bucket数组，用来存储深搜后得到的所有可行路径。
+
+ 
+ 
