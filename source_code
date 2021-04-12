@@ -1,1 +1,213 @@
+#include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+typedef struct building
+{
+	int index;
+	char type[15];
+	char name[30];
+}building;
+
+typedef struct path
+{
+	int length;
+	double crowded;
+	int bicycle;
+	building departure;
+	building destination;
+}path;
+
+typedef struct schoolbus
+{
+	int time_dep;
+	int length;
+ 	int time;
+}schoolbus;
+
+typedef struct bus
+{
+	int time_dep;
+	int length;
+	int time;
+}bus;
+
+typedef struct cur_pos
+{
+	int x;
+	int y;
+}cur_pos;
+
+/*
+沙河校区 15个建筑物+13个服务设施 +大门+公交站 
+教学楼Academic： 5个 综合南；综合北；学院南；学院北；实验
+办公楼Office：2个 综合办公楼；宿舍楼旁边的办公楼 
+宿舍楼Dorm:8个 宿舍S2;宿舍S3;宿舍S4;宿舍S5;宿舍B;宿舍C;宿舍D;宿舍E
+食堂Dining:3个 学生食堂Stu；教工食堂Tea；南区食堂South 
+超市Store: 2个 雁北超市；小麦铺
+咖啡厅Coffee: 2个 图书馆下方；食堂旁边 
+操场Playground: 1个 大操场 
+打印店 Printing: 2个 小麦铺打印店；雁北打印店 
+理发店 Barber: 1个 雁北理发店 
+医务室Medical: 1个 医务室 
+学活StuCenter: 1个 学活 
+//邮局ATM: 1个 学活ATM 
+//快递站Express: 1个 快递站 
+//信息楼Information: 1个 信息楼S1 
+正门Gate: 1个 正门 
+公交站Bus: 1个 公交站 
+*/ 
+building _01={1,"Academic","SH_ShiYanAcademic"}; 
+building _02={2,"Academic","SH_XueYuanAcademic_South"}; 
+building _03={3,"Academic","SH_XueYuanAcademic_North"}; 
+building _04={4,"Academic","SH_ZongHeAcademic_South"}; 
+building _05={5,"Academic","SH_ZongHeAcademic_North"}; 
+building _06={6,"Office","SH_ZongHeOffice"}; 
+building _07={7,"Office","SH_DormOffice"}; 
+building _08={8,"Dorm","SH_DormS2"}; 
+building _09={9,"Dorm","SH_DormS3"}; 
+building _10={10,"Dorm","SH_DormS4"}; 
+building _11={11,"Dorm","SH_DormS5"}; 
+building _12={12,"Dorm","SH_DormB"}; 
+building _13={13,"Dorm","SH_DormC"}; 
+building _14={14,"Dorm","SH_DormD"}; 
+building _15={15,"Dorm","SH_DormE"}; 
+building _16={16,"Dining","SH_DiningStu"}; 
+building _17={17,"Dining","SH_DiningTea"}; 
+building _18={18,"Dining","SH_DiningSouth"}; 
+building _19={19,"Store","SH_StoreDorm"}; 
+building _20={20,"Store","SH_StoreStuCenter"}; 
+building _21={21,"Coffee","SH_CoffeeLibrary"}; 
+building _22={22,"Coffee","SH_CoffeeDining"}; 
+building _23={23,"Printing","SH_PrintingDorm"}; 
+building _24={24,"Printing","SH_PrintingStore"}; 
+building _25={25,"Barber","SH_Barber"}; 
+building _26={26,"Medical","SH_Medical"}; 
+building _27={27,"StuCenter","SH_StuCenter"}; 
+building _28={28,"Playground","SH_Playground"}; 
+building _29={29,"Gate","SH_Gate"}; 
+building _30={30,"Bus","SH_BusStop"}; 
+building building_list[30]={_01,_02,_03,_04,_05,_06,_07,_08,_09,_10,
+_11,_12,_13,_14,_15,_16,_17,_18,_19,_20,
+_21,_22,_23,_24,_25,_26,_27,_28,_29,_30}; 
+
+path path1={150,0.98,1,_01,_02}; path path2={200,0.98,1,_01,_03}; path path3={110,0.90,0,_01,_04}; path path4={180,0.75,0,_01,_05}; path path5={230,0.95,1,_01,_21}; 
+path path6={220,0.85,0,_02,_04}; path path7={110,0.97,0,_03,_21}; path path8={170,0.75,1,_03,_05}; path path9={290,0.85,1,_03,_04};
+path path10={50,0.35,0,_04,_05}; path path11={500,0.86,1,_04,_18}; path path12={380,0.82,1,_04,_10}; path path13={400,0.82,1,_04,_09};
+path path14={290,0.56,1,_04,_27}; path path15={350,0.45,1,_04,_20}; path path16={390,0.58,1,_04,_16}; path path17={570,0.60,1,_04,_19};
+path path18={70,0.80,0,_05,_21}; path path19={540,0.85,1,_05,_18}; path path20={380,0.71,1,_05,_07}; path path21={420,0.81,1,_05,_10};
+path path22={250,0.48,1,_05,_27}; path path23={290,0.48,1,_05,_20}; path path24={370,0.56,1,_05,_16}; path path25={450,0.76,1,_05,_19};
+path path26={210,0.92,0,_21,_27}; path path27={250,0.92,0,_21,_06}; path path28={285,0.98,0,_21,_26}; path path29={410,0.82,1,_21,_07};
+
+
+/* 
+校车时刻表，每天一样  
+7:00 
+9:00
+12:00
+14:00
+17:00
+21:00
+时长均为60分钟，距离均为23000米 
+
+公交时刻表，每天一样 
+7:00 
+9:00 
+11:00
+13:00
+15:00
+17:00
+19:00
+21:00
+时长与距离有所波动 
+
+*/ 
+schoolbus schoolbus01 = {7,23000,60}; schoolbus schoolbus02 = {9,23000,60};
+schoolbus schoolbus03 = {12,23000,60}; schoolbus schoolbus04 = {14,23000,60};
+schoolbus schoolbus05 = {17,23000,60}; schoolbus schoolbus06 = {21,23000,60};
+
+bus bus01 = {7,25000,75}; bus bus02 = {9,24000,68};
+bus bus03 = {11,25000,75}; bus bus04 = {13,24500,72};
+bus bus05 = {15,23500,64}; bus bus06 = {17,25000,75};
+bus bus07 = {19,25000,75}; bus bus08 = {21,24000,68};
+
+
+int year = 2021;
+int month = 3;
+int date = 24;
+int Hour = 14;
+int Minute = 25; 
+
+void initiate_time() //初始化计时器
+{
+	clock_t start = clock();
+	printf("%d/%d/%d %d:%d", year, month, date, Hour,Minute);
+	int key = 0;
+	while (true)
+	{
+		key = kbhit();
+		if (key)
+		{
+			printf("\n检测到输入，计时暂停。\n");
+			printf("如要开始导航请按1，否则请按0。");
+			int a;	scanf("%d", &a);
+			if (a)
+			{
+				printf("是否需要跳转到指定日期？\n");
+				printf("需要请按1，否则请按0。\n");
+				int b; scanf("%d", &b);
+				if (b)
+				{
+					printf("请按如下格式输入：yyyy mm dd time\n");
+					scanf("%d %d %d %d", &year, &month, &date, &Hour);
+				}
+				return;
+			}
+			key = 0;
+			start = clock();
+		}
+		else
+		{
+			clock_t end = (clock() - start) / 1000;
+			if (end / 10 == 1)
+			{
+				system("cls");
+				Minute++;
+				if (Minute <= 59)
+					printf("%d/%d/%d %d:%d", year, month, date, Hour,Minute);
+				else
+				{
+					Minute = 0;
+					Hour++;
+					if(Hour>=24)
+					{
+						Hour=0;
+						date++;
+					}
+					printf("%d/%d/%d %d:%d", year, month, date, Hour,Minute);
+				}
+				start = clock();
+			}
+		}
+	}
+}
+
+
+
+int main()
+{
+	initiate_time();
+	
+	system("pause");
+	return 0;
+}
+
+
+
+
+
+
+
+
 
