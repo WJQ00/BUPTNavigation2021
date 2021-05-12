@@ -6,9 +6,11 @@ namespace StatsTypes
 {
 	public enum Building_type
     {
-		jiaoxuelou,
-		yundong
-    }
+		Academic, Office, Dorm, Dining, Store, 
+		Coffee, Printing, Barber, Medical, StuCenter, 
+		Library, Bath, Square, Auditorium, Playground, 
+		Gate, Bus
+	}
 	[System.Serializable]
 	public struct Building
 	{
