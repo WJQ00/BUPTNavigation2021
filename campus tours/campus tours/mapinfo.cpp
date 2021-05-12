@@ -157,7 +157,7 @@ building XTbuilding_list[50] = { XT_01,XT_02,XT_03,XT_04,XT_05,XT_06,XT_07,XT_08
 XT_11,XT_12,XT_13,XT_14,XT_15,XT_16,XT_17,XT_18,XT_19,XT_20,
 XT_21,XT_22,XT_23,XT_24,XT_25,XT_26,XT_27,XT_28,XT_29,XT_30,XT_31,XT_32,XT_33,XT_34,XT_35,XT_36,XT_37,XT_38,XT_39,XT_40,XT_41,XT_42,
 XT_43,XT_44,XT_45,XT_46,XT_47};
-static struct path XT_path[55][55];
+static struct path XT_path[55][55] = {0};
 void XT_pathgeneration() {
 XT_path[1][2] = { 200,0.88,1,XT_01,XT_02 }; XT_path[1][3] = { 200,0.88,1,XT_01,XT_03 }; XT_path[1][4] = { 32,0.45,1,XT_01,XT_04 };  XT_path[1][6] = { 135,0.33,1,XT_01,XT_06 };  XT_path[1][8] = { 20,0.51,0,XT_01,XT_08 }; XT_path[1][10] = { 45,0.88,1,XT_01,XT_10 };  XT_path[1][20] = { 5,0.66,0,XT_01,XT_20 }; XT_path[1][21] = { 25,0.45,0,XT_01,XT_21 };  XT_path[1][33] = { 175,0.76,1,XT_01,XT_33 }; XT_path[1][36] = { 85,0.88,1,XT_01,XT_36 }; XT_path[1][37] = { 80,0.58,0,XT_01,XT_37 }; XT_path[1][38] = { 122,0.76,1,XT_01,XT_38 }; XT_path[1][39] = { 157,0.77,0,XT_01,XT_39 }; 
 XT_path[2][3] = { 32,0.45,0,XT_02,XT_03 }; XT_path[2][4] = { 200,0.88,1,XT_02,XT_04 }; XT_path[2][6] = { 15,0.58,0,XT_02,XT_06 }; XT_path[2][8] = { 27,0.91,0,XT_02,XT_08 };   XT_path[2][21] = { 238,0.88,1,XT_02,XT_21 };  XT_path[2][27] = { 110,0.88,1,XT_02,XT_27 }; XT_path[2][30] = { 80,0.88,1,XT_02,XT_30 };  XT_path[2][32] = { 175,0.26,1,XT_02,XT_32 };  XT_path[2][37] = { 100,0.88,1,XT_02,XT_37 }; 
