@@ -153,10 +153,141 @@ namespace Stats
                 }
 
             {
-                paths[1, 2].Set(25, 0.5, true);
+                paths[1, 2].Set(150, 0.98, true);
+                paths[1, 3].Set(200, 0.98, true);
+                paths[1, 4].Set(110, 0.90, false);
+                paths[1, 5].Set(180, 0.75, false);
+                paths[1, 21].Set(230, 0.95, true);
             }
             {
-                paths[5, 12].Set(100, 1, false);
+                paths[2, 4].Set(220, 0.85, false);
+            }
+            {
+                paths[3, 4].Set(290, 0.85, true);
+                paths[3, 5].Set(170, 0.75, true);
+                paths[3, 21].Set(110, 0.97, false);
+            }
+            {
+                paths[4, 5].Set(50, 0.35, false);
+                paths[4, 18].Set(500, 0.86, true);
+                paths[4, 10].Set(380, 0.82, true);
+                paths[4, 9].Set(400, 0.82, true);
+                paths[4, 27].Set(290, 0.56, true);
+                paths[4, 20].Set(350, 0.45, true);
+                paths[4, 16].Set(390, 0.58, true);
+                paths[4, 19].Set(570, 0.60, true);
+            }
+            {
+                paths[5, 21].Set(70, 0.80, false);
+                paths[5, 18].Set(540, 0.85, true);
+                paths[5, 7].Set(380, 0.71, true);
+                paths[5, 10].Set(420, 0.81, true);
+                paths[5, 27].Set(250, 0.48, true);
+                paths[5, 20].Set(290, 0.48, true);
+                paths[5, 16].Set(370, 0.56, true);
+                paths[5, 19].Set(450, 0.76, true);
+            }
+            {
+                paths[6, 16].Set(150, 0.74, false);
+                paths[6, 17].Set(140, 0.78, false);
+                paths[6, 20].Set(115, 0.84, true);
+                paths[6, 21].Set(250, 0.92, false);
+                paths[6, 26].Set(140, 0.97, false);
+                paths[6, 27].Set(45, 0.88, false);
+            }
+            {
+                paths[7, 8].Set(65, 0.84, true);
+                paths[7, 16].Set(190, 0.65, true);
+                paths[7, 19].Set(125, 0.83, false);
+                paths[7, 20].Set(240, 0.81, true);
+                paths[7, 21].Set(410, 0.82, true);
+                paths[7, 22].Set(220, 0.76, true);
+                paths[7, 27].Set(275, 0.86, true);
+                paths[7, 28].Set(240, 0.79, true);
+                paths[7, 29].Set(385, 0.87, true);
+            }
+            {
+                paths[8, 9].Set(70, 0.82, true);
+            }
+            {
+                paths[9, 10].Set(50, 0.90, true);
+            }
+            {
+                paths[10, 11].Set(50, 0.94, true);
+            }
+            {
+                paths[11, 18].Set(80, 0.81, true);
+            }
+            {
+                paths[12, 13].Set(45, 0.94, false);
+                paths[12, 15].Set(125, 0.92, false);
+                paths[12, 16].Set(160, 0.86, false);
+                paths[12, 19].Set(44, 0.84, false);
+                paths[12, 28].Set(72, 0.80, false);
+                paths[12, 29].Set(415, 0.87, true);
+            }
+            {
+                paths[13, 14].Set(100, 0.89, false);
+                paths[13, 15].Set(85, 0.96, false);
+                paths[13, 16].Set(135, 0.89, false);
+                paths[13, 17].Set(122, 0.89, false);
+                paths[13, 19].Set(64, 0.96, false);
+                paths[13, 28].Set(125, 0.86, false);
+            }
+            {
+                paths[14, 15].Set(60, 0.94, false);
+                paths[14, 16].Set(162, 0.85, false);
+                paths[14, 17].Set(75, 0.87, false);
+                paths[14, 26].Set(250, 0.95, false);
+            }
+            {
+                paths[15, 28].Set(85, 0.84, false);
+            }
+            {
+                paths[16, 17].Set(65, 0.77, false);
+                paths[16, 19].Set(145, 0.84, false);
+                paths[16, 20].Set(88, 0.81, false);
+                paths[16, 22].Set(35, 0.85, false);
+                paths[16, 26].Set(265, 0.72, false);
+                paths[16, 29].Set(550, 0.89, true);
+            }
+            {
+                paths[17, 19].Set(189, 0.92, false);
+                paths[17, 20].Set(140, 0.76, false);
+                paths[17, 22].Set(105, 0.81, false);
+                paths[17, 26].Set(175, 0.88, false);
+                paths[17, 27].Set(170, 0.75, false);
+            }
+            {
+                paths[19, 23].Set(17, 0.81, false);
+                paths[19, 25].Set(15, 0.86, false);
+                paths[19, 28].Set(110, 0.85, false);
+                paths[19, 29].Set(425, 0.86, false);
+            }
+            {
+                paths[20, 22].Set(60, 0.83, false);
+                paths[20, 24].Set(20, 0.91, false);
+                paths[20, 26].Set(220, 0.81, false);
+                paths[20, 27].Set(85, 0.90, false);
+            }
+            {
+                paths[21, 27].Set(210, 0.92, false);
+                paths[21, 26].Set(285, 0.98, false);               
+            }
+            {
+                paths[23, 25].Set(20, 0.82, false);
+            }
+            {
+                paths[24, 27].Set(95, 0.91, false);
+            }
+            {
+                paths[26, 27].Set(205, 0.93, false);
+            }
+            {
+                paths[28, 29].Set(405, 0.84, true);
+            }
+            {
+                paths[29, 30].Set(200, 0.95, true);
             }
             #endregion
         }
